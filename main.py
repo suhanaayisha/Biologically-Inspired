@@ -97,7 +97,7 @@ tanh = Tanh()
 # functions_per_layer= list(functions_per_layer);
 # print("functions_per_layer\n",len(functions_per_layer))
 
-# loss_func = Binary_cross_entropy()
+loss_func = Binary_cross_entropy()
 
 # ann = ANNBuilder.build(no_of_layers, nodes_per_layer, functions_per_layer)
 

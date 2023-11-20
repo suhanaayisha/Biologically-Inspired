@@ -31,7 +31,12 @@ class Particle:
             distance = self.distance(particle)
             neighbours.append((particle,distance))
         neighbours.sort(key=lambda tup: tup[1])
-        return neighbours[0:informantNB]
+        sortedParticles = []
+        for neighbour in neighbours:
+            particle = neighbour[0]
+            sortedParticles.append(particle)
+
+        return sortedParticles[0:informantNB]
 
     def setInformants(self, informantType, informantNB, particles):
         if informantType == 0:
@@ -68,10 +73,10 @@ class Particle:
         self._func.setVariables(self.pBestPos)
 
     def findlBestParticle(self, opt):
-        lBestParticle = self._informants[0][0]
+        lBestParticle = self._informants[0]
         for informant in self._informants:
-            if opt(informant[0].getpBestFitness(), lBestParticle.getpBestFitness()):
-                lBestParticle = informant[0]
+            if opt(informant.getpBestFitness(), lBestParticle.getpBestFitness()):
+                lBestParticle = informant
         return lBestParticle
 
     def getFunc(self):
