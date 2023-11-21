@@ -2,7 +2,7 @@ import numpy as np
 from .activation import Sigmoid
 
 class Layer:
-    def __init__(self,nb_inputs, nb_nodes, activation):
+    def __init__(self, nb_inputs, nb_nodes, activation):
         np.random.seed(42)
         size= (nb_nodes,nb_inputs)
         self._w = np.random.uniform(-1,1,size)
@@ -25,7 +25,7 @@ class Layer:
         return offset+step
       
     def getDimension(self):
-        return self._w.shape[0] + self._w.shape[1] + self._b.shape[0]
+        return (self._w.shape[0] * self._w.shape[1]) + self._b.shape[0]
 
     def forward(self, xin):
         self._xin = xin
