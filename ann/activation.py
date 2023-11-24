@@ -1,14 +1,4 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 import numpy as np
-import math
-
-
-# In[2]:
 
 
 class Activation:
@@ -21,15 +11,8 @@ class Sigmoid(Activation):
     
 class Tanh(Activation):
     def evaluate(self, x):
-        return (np.exp(x)-np.exp(-x))/(np.exp(x)+np.exp(-x))
+        return 2 * Sigmoid(2*x)-1
 
 class Relu(Activation):
     def evaluate(selx,x):
         return np.maximum(0,x)
-
-
-# In[ ]:
-
-
-
-
