@@ -1,10 +1,4 @@
 from .particle import Particle
-import operator
-
-operators = {
-    'MIN': operator.lt,
-    'MAX': operator.gt
-}
 
 class PSO:
     def __init__(self, func, size, beta, gamma, delta, alpha, epsilon, informantType, informantNB, maxIter, opt):
@@ -18,7 +12,7 @@ class PSO:
         self._infortmantType = informantType
         self._informantNB = informantNB
         self._maxIter = maxIter
-        self._opt = operators.get(opt)
+        self._opt = opt
 
         #create particles
         for i in range(size):

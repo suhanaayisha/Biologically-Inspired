@@ -1,5 +1,4 @@
 import numpy as np
-from .activation import Sigmoid
 
 class Layer:
     def __init__(self, nb_inputs, nb_nodes, activation):

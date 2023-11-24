@@ -24,7 +24,7 @@ class Network:
         L=0
         acc = 0
         for i in range(x.shape[0]):
-            y_hat, loss_val = self.forward1DataPoint(x[i],y[i], loss_func)
+            y_hat, loss_val = self.forward(x[i],y[i], loss_func)
             L+= loss_val
             y_hat_01 = list(map(threshold, y_hat))
             acc +=1 if y_hat_01==y[i] else 0
@@ -34,15 +34,11 @@ class Network:
         acc = acc / x.shape[0]
         return acc, L
     
-    def forward1DataPoint(self, x, y, loss_func):
-        y_hat = self.forward(x)
-        L = loss_func.evaluate(y_hat, y)
-        return y_hat, L
 
-
-    def forward (self, inp):
-        self.out = inp
+    def forward(self, x, y, loss_func):
+        self.out = x
         for layer in self.layers:
             self.out = layer.forward(self.out)
-        return self.out
+        loss = loss_func.evaluate(self.out, y)
+        return self.out, loss
 
