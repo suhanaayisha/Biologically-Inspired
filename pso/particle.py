@@ -8,7 +8,7 @@ class Particle:
         self._func = func
         self.velocity = 0
         self.position,  self.pBestPos = None, None
-        self.pBestFitness = 0
+        self.pBestFitness = sys.float_info.max
         self.fitness = 0
         self._informants = []
         dimensions = func.getDimension()
@@ -16,7 +16,7 @@ class Particle:
     
     def initPosition(self, dim):
         self.position = np.random.uniform(-1,1,dim)
-        self.pBestPos = np.copy(self.position)
+        self.bestPos = np.copy(self.position)
 
     def getPosition(self):
         return self.position
@@ -35,7 +35,6 @@ class Particle:
         for neighbour in neighbours:
             particle = neighbour[0]
             sortedParticles.append(particle)
-        return sortedParticles[0:int(informantNB)]
 
         return sortedParticles[0:informantNB]
 
@@ -45,17 +44,17 @@ class Particle:
         elif informantType == 1:
             self._informants = self.findNeighbours(particles, informantNB)
         else:
-            self._informants = self.findNeighbours(particles, int(informantNB/2))
-            del particles[0:int(informantNB/2)]
-            self._informants.extend(sample(particles, int(informantNB/2)))
+            self._informants = self.findNeighbours(particles, informantNB/2)
+            del particles[0:informantNB/2]
+            self._informants.extend(sample(particles, informantNB/2))
 
     def updateInformants(self, informantType, informantNB, particles):
         if informantType == 1:
             self._informants = self.findNeighbours(particles, informantNB)
         elif informantType == 2:
-            self._informants = self.findNeighbours(particles, int(informantNB/2))
-            del particles[0:int(informantNB/2)]
-            self._informants.extend(sample(particles, int(informantNB/2)))
+            self._informants = self.findNeighbours(particles, informantNB/2)
+            del particles[0:informantNB/2]
+            self._informants.extend(sample(particles, informantNB/2))
 
     def getpBestFitness(self):
         return self.pBestFitness

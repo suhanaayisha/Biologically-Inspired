@@ -4,7 +4,8 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
-import operator
+
+import keras 
 
 from ann.activation import *
 from ann.loss import *
@@ -30,6 +31,9 @@ y = dataset.iloc[:,columns-1:columns].values
 sc = StandardScaler()
 X = sc.fit_transform(X)
 
+
+print("y cate", y)
+
 X_train, X_test, y_train, y_test, = train_test_split(X, y, test_size=0.2)
 
 no_of_features=X.shape[1];
@@ -46,16 +50,13 @@ print("no_of_features = {}".format(no_of_features))
 # no_of_layers = 2 + hidden_layers
 # print("Total no. of layers", no_of_layers)
 
-# nodes_per_hidden_layer = []
 
 
 
 
-# for i in range(0, hidden_layers):
-#     ele = int(input())
-#     # adding the node for hidden layers
-#     nodes_per_hidden_layer.append(ele)  
- 
+# nodes_per_hidden_layer = list(map(int, 
+#     input("\nEnter the number of nodes in each hidden layers (separated by space).\n For eg. 3 2 1, if you have 3 hidden layers : ").strip().split()))[:hidden_layers]
+
 # print("No. of nodes per hidden layer", nodes_per_hidden_layer)
 
 # nodes_per_layer = [no_of_features]+nodes_per_hidden_layer+[1]
@@ -118,21 +119,22 @@ LOCAL_INFORMANTS = 1
 LOCAL_GLOBAL_INFORMANTS = 2
 
 #Testing: here you can change values for these parameters and observe results
-size=20
+size=50
 beta=1.3
 gamma=1.4
 delta=1.3
 alpha=0.1
 epsilon=0.5
-maxIter=100
+maxIter=200
 
 #Testing: here you can use RANDOM_INFORMANTS, LOCAL_INFORMANTS or LOCAL_GLOBAL_INFORMANTS
-informantType = 0
+informantType = RANDOM_INFORMANTS
 informantNB = 4
+opt = 'MIN'
 
 ##PSO population
 
-pso=PSO(annFunc, size, beta, gamma, delta, alpha, epsilon, informantType, informantNB, maxIter, operator.lt)
+pso=PSO(annFunc, size, beta, gamma, delta, alpha, epsilon, informantType, informantNB, maxIter, opt)
 
 bestANN = pso.evolve().getANN()
 
