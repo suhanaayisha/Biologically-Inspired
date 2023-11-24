@@ -11,7 +11,8 @@ class Sigmoid(Activation):
     
 class Tanh(Activation):
     def evaluate(self, x):
-        return 2 * Sigmoid(2*x)-1
+        sigmoid = Sigmoid()
+        return 2 * sigmoid.evaluate(2*x)-1
 
 class Relu(Activation):
     def evaluate(selx,x):

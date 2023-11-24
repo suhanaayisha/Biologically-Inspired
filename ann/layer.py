@@ -1,15 +1,12 @@
 import numpy as np
-from .activation import Sigmoid
 
 class Layer:
-    def __init__(self, nb_inputs, nb_nodes, activation):
+    def __init__(self, no_of_inputs, no_of_nodes, activation):
         np.random.seed(42)
-        size= (nb_nodes,nb_inputs)
-        self._w = np.random.uniform(-1,1,size)
-        self._b = np.random.uniform(-1,1,nb_nodes)
+        size= (no_of_nodes, no_of_inputs)
+        self._w = np.random.uniform(-1, 1, size)
+        self._b = np.random.uniform(-1, 1, no_of_nodes)
         self.activation = activation
-        # self.weights = np.random.rand(no_nodes, input_size)
-        # self.bias = np.random.rand(1,no_nodes)
         self.x=[]
 
     def setWeights(self, offset, params):

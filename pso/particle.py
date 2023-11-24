@@ -44,17 +44,17 @@ class Particle:
         elif informantType == 1:
             self._informants = self.findNeighbours(particles, informantNB)
         else:
-            self._informants = self.findNeighbours(particles, informantNB/2)
-            del particles[0:informantNB/2]
-            self._informants.extend(sample(particles, informantNB/2))
+            self._informants = self.findNeighbours(particles, int(informantNB/2))
+            del particles[0:int(informantNB/2)]
+            self._informants.extend(sample(particles, int(informantNB/2)))
 
     def updateInformants(self, informantType, informantNB, particles):
         if informantType == 1:
             self._informants = self.findNeighbours(particles, informantNB)
         elif informantType == 2:
-            self._informants = self.findNeighbours(particles, informantNB/2)
-            del particles[0:informantNB/2]
-            self._informants.extend(sample(particles, informantNB/2))
+            self._informants = self.findNeighbours(particles, int(informantNB/2))
+            del particles[0:int(informantNB/2)]
+            self._informants.extend(sample(particles, int(informantNB/2)))
 
     def getpBestFitness(self):
         return self.pBestFitness

@@ -5,10 +5,8 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
-import keras 
-
-from ann.activation import *
-from ann.loss import *
+from activation import *
+from loss import *
 from ann.annBuilder import ANNBuilder
 
 from adapter.adapter import AdapterFunction
@@ -119,13 +117,13 @@ LOCAL_INFORMANTS = 1
 LOCAL_GLOBAL_INFORMANTS = 2
 
 #Testing: here you can change values for these parameters and observe results
-size=50
+size=35
 beta=1.3
 gamma=1.4
 delta=1.3
 alpha=0.1
 epsilon=0.5
-maxIter=200
+maxIter=100
 
 #Testing: here you can use RANDOM_INFORMANTS, LOCAL_INFORMANTS or LOCAL_GLOBAL_INFORMANTS
 informantType = RANDOM_INFORMANTS
