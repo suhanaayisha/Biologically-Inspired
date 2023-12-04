@@ -18,7 +18,7 @@ class PSO:
         self._infortmantType = informantType
         self._informantNB = informantNB
         self._maxIter = maxIter
-        self._opt = operators.get(opt)
+        self._opt = opt
 
         #create particles
         for i in range(size):

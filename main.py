@@ -4,8 +4,7 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
-
-import keras 
+import operator
 
 from ann.activation import *
 from ann.loss import *
@@ -134,11 +133,11 @@ maxIter=200
 #Testing: here you can use RANDOM_INFORMANTS, LOCAL_INFORMANTS or LOCAL_GLOBAL_INFORMANTS
 informantType = RANDOM_INFORMANTS
 informantNB = 4
-opt = 'MIN'
+
 
 ##PSO population
 
-pso=PSO(annFunc, size, beta, gamma, delta, alpha, epsilon, informantType, informantNB, maxIter, opt)
+pso=PSO(annFunc, size, beta, gamma, delta, alpha, epsilon, informantType, informantNB, maxIter, operator.lt)
 
 bestANN = pso.evolve().getANN()
 
