@@ -1,5 +1,4 @@
 import numpy as np
-from .activation import Sigmoid
 
 class Layer:
     def __init__(self, no_of_layers, nodes_per_layer, activation):
@@ -9,7 +8,7 @@ class Layer:
         self._weights = np.random.uniform(-1,1,size)
         self._bias = np.random.uniform(-1,1,nodes_per_layer)
 
-    def setWeights(self, offset, params):
+    def updateWeights(self, offset, params):
         n = self._weights.shape[0] 
         m = self._weights.shape[1] 
         

@@ -15,10 +15,10 @@ class Network:
             dim += layer.getDimension()
         return dim
     
-    def setWeights(self, params):
+    def updateWeights(self, params):
         for layer in self.layers:
             offset=0
-            offset += layer.setWeights(offset, params)
+            offset += layer.updateWeights(offset, params)
 
     def evaluate(self,x, y, loss_func):
         L=0

@@ -1,10 +1,4 @@
 from .particle import Particle
-import operator
-
-operators = {
-    'MIN': operator.lt,
-    'MAX': operator.gt
-}
 
 class PSO:
     def __init__(self, func, size, beta, gamma, delta, alpha, epsilon, informantType, informantNB, maxIter, opt):

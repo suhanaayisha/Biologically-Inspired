@@ -6,8 +6,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 import operator
 
-from ann.activation import *
-from ann.loss import *
+from activation import *
+from loss import *
 from ann.annBuilder import ANNBuilder
 
 from adapter.adapter import AdapterFunction
@@ -70,7 +70,7 @@ sigmoid = Sigmoid()
 relu = Relu()
 tanh = Tanh()
 
-print("Enter activation functions per hidden layer: ")
+print("Enter activation functions per hidden layer: (s, r or t)")
 functions_per_layer_str=[]
 for i in range(0, hidden_layers):
     func_str = input(f"Layer {i+1}: ")

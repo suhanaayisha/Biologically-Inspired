@@ -15,11 +15,11 @@ class AdapterFunction(Fitness):
         return dim
     
     def setVariables(self, params):
-        self.ann.setWeights(params)
+        self.ann.updateWeights(params)
         # return Fitness().setVariables(params)
     
     def evaluate(self, params):
-        self.ann.setWeights(params)
+        self.ann.updateWeights(params)
         acc, loss = self.ann.evaluate(self.x, self.y, self.loss)
         return acc, loss
     
